@@ -24,8 +24,91 @@ class WeatherAppAgent:
         os.makedirs("weather-app/frontend/src/hooks", exist_ok=True)
         os.makedirs("weather-app/backend/src", exist_ok=True)
 
-        # Store initial project plan
-        plan = """Weather Web App Project Plan:
+        # Store complete project configuration
+        config = """Weather Web App Configuration:
+        
+        # Project Structure
+        /weather-app
+          /frontend
+            /src
+              /components
+              /hooks
+              /types
+            package.json
+            vite.config.ts
+            tsconfig.json
+            index.html
+          /backend
+            /src
+            package.json
+            tsconfig.json
+        
+        # Frontend Dependencies
+        {
+          "dependencies": {
+            "react": "^18.2.0",
+            "react-dom": "^18.2.0",
+            "axios": "^1.6.0",
+            "typescript": "^5.0.0"
+          },
+          "devDependencies": {
+            "@types/react": "^18.2.0",
+            "@types/react-dom": "^18.2.0",
+            "vite": "^5.0.0",
+            "@vitejs/plugin-react": "^4.0.0"
+          }
+        }
+        
+        # Backend Dependencies
+        {
+          "dependencies": {
+            "express": "^4.18.0",
+            "cors": "^2.8.5",
+            "typescript": "^5.0.0",
+            "axios": "^1.6.0"
+          },
+          "devDependencies": {
+            "@types/express": "^4.17.0",
+            "@types/cors": "^2.8.5",
+            "ts-node": "^10.9.0",
+            "nodemon": "^3.0.0"
+          }
+        }
+        
+        # TypeScript Configurations
+        ## Frontend tsconfig.json
+        {
+          "compilerOptions": {
+            "target": "ES2020",
+            "useDefineForClassFields": true,
+            "lib": ["ES2020", "DOM", "DOM.Iterable"],
+            "module": "ESNext",
+            "skipLibCheck": true,
+            "moduleResolution": "bundler",
+            "allowImportingTsExtensions": true,
+            "resolveJsonModule": true,
+            "isolatedModules": true,
+            "noEmit": true,
+            "jsx": "react-jsx",
+            "strict": true,
+            "noUnusedLocals": true,
+            "noUnusedParameters": true,
+            "noFallthroughCasesInSwitch": true
+          },
+          "include": ["src"],
+          "references": [{ "path": "./tsconfig.node.json" }]
+        }
+        
+        # CSS Modules Type Definition
+        declare module '*.module.css' {
+          const classes: { [key: string]: string };
+          export default classes;
+        }
+        """
+        self._store_in_memex(config, "project_config")
+        
+        # Store project plan
+        plan = """Weather Web App Development Plan:
         1. Frontend Setup (React + TypeScript)
            - Weather display component
            - Data fetching hook
